@@ -13,9 +13,11 @@ export default function Invite() {
       let res = await axios.get(`http://localhost:3000/api/invite/${token}`);
 
       setGuest(res.data);
-      localStorage.setItem("inviteToken", token);
 
-      if (res.data.rsvp) nav("/");
+      if (res.data.rsvp) {
+        localStorage.setItem("inviteToken", token);
+        nav("/");
+      }
     } catch (error) {
       console.error(error);
       alert(`${error.message}`);
@@ -30,6 +32,7 @@ export default function Invite() {
           { attending: true },
           { headers: { authorization: token } },
         );
+        localStorage.setItem("inviteToken", token);
         nav("/");
       } else {
         window.location.href =
