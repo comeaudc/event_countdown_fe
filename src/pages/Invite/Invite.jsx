@@ -1,11 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useGuest } from "../../context/guestContext";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Invite() {
+  const { guest, setGuest } = useGuest();
   const nav = useNavigate();
   const { token } = useParams();
-  const [guest, setGuest] = useState(null);
 
   async function getUserData() {
     try {
@@ -24,7 +25,11 @@ export default function Invite() {
   async function handleRSVP(e) {
     try {
       if (e.target.value == "Yes") {
-        await axios.post(`http://localhost:3000/api/rsvp`, { attending: true }, {headers: {authorization: token}});
+        await axios.post(
+          `http://localhost:3000/api/rsvp`,
+          { attending: true },
+          { headers: { authorization: token } },
+        );
         nav("/");
       } else {
         window.location.href =
