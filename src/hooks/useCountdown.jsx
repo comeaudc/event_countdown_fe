@@ -1,19 +1,35 @@
 import { useState, useEffect } from "react";
 
-export default function useCountdown(targetDate){
-    const [time, setTime] = useState({})
-    useEffect(()=>{
-        const interval = setInterval(()=>{
-            const diff = new Date(targetDate) = new Date()
+export default function useCountdown(targetDate) {
+  const [time, setTime] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
-            setTime({
-                days: Math.floor(diff / (1000*60*60*24)),
-                hours: Math.floor(diff / (1000*60*60)) % 24
-            })
-        }, 1000)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const diff = new Date(targetDate) - new Date();
 
-        return ()=>{clearInterval(interval)}
-    }, [])
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (60 * 60 * 24));
+      const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor(((totalSeconds % (60 * 60 * 24)) % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
 
-    return time
+      setTime({
+        days,
+        hours,
+        minutes,
+        seconds,
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [targetDate]);
+
+  return time;
 }
