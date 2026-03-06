@@ -1,42 +1,19 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Set default styles for mobile devices */
+@media only screen and (max-width: 768px) {
+  /* Your mobile-friendly CSS goes here, e.g. */
+  body {
+    font-size: 14px; /* decrease font size for smaller screens */
+    padding: 0; /* remove some padding to optimize for mobile */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Set default styles for computer browsers */
+@media only screen and (min-width: 769px) {
+  /* Your computer-friendly CSS goes here, e.g. */
+  body {
+    font-size: 16px; /* restore font size */
+    padding: 0; /* remove some padding to optimize for computer */
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/* Add more media queries as needed for specific devices or screen sizes */
