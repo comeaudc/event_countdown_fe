@@ -1,9 +1,12 @@
 import GuestProvider from "./guestContext/guestContext";
+import { MediaProvider } from "./mediaContext/mediaContext";
 
 export default function AppProvider({ children }) {
   return (
     <>
-      <GuestProvider>{children}</GuestProvider>
+      <MediaProvider>
+        <GuestProvider>{children}</GuestProvider>
+      </MediaProvider>
     </>
   );
 }

@@ -1,0 +1,59 @@
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  grid-auto-rows: 8px;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-card img,
+.gallery-card video {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Video wrapper for overlay */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: white;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.caption-display {
+  padding: 6px 8px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.caption-input {
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}

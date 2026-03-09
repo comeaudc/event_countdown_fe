@@ -18,10 +18,8 @@
 
 /* Add more media queries as needed for specific devices or screen sizes */
 
-/* Gallery.css or global CSS */
-.gallery-container {
-  max-width: 900px; /* Limit overall page width */
-  margin: 0 auto;   /* Center on screen */
-  padding: 20px;
-  box-sizing: border-box;
+.media-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 120px; /* space for floating upload button */
 }
