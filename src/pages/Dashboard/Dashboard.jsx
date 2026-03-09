@@ -1,4 +1,4 @@
-import Countdown from "../../components/Countdown.jsx";
+import Countdown from "../../components/Countdown/Countdown.jsx";
 import Schedule from "../../components/Schedule.jsx";
 import { Link } from "react-router-dom";
 import Hero from "../../components/Hero/Hero.jsx";

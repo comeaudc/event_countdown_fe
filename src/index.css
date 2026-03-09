@@ -18,12 +18,14 @@ body {
   font-size: 16px;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+
+  background: linear-gradient(180deg, #faf7f5 0%, #ffffff 40%);
 }
