@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useGuest } from "../../context/guestContext";
+import { useGuest } from "../../context/guestContext/guestContext";
 import axios from "axios";
 import { useEffect } from "react";
 
