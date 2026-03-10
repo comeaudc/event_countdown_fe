@@ -9,7 +9,9 @@ export default function Countdown() {
 
   const Item = ({ value, label }) => (
     <div className="countdown-item">
-      <div className="countdown-number">{value}</div>
+      <div key={value} className="countdown-number">
+        {value}
+      </div>
       <div className="countdown-label">{label}</div>
     </div>
   );

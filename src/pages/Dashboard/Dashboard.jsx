@@ -5,13 +5,18 @@ import Hero from "../../components/Hero/Hero.jsx";
 
 export default function Dashboard() {
   return (
-    <>
+    <div className="dashboard">
       <Hero />
+
       <Countdown />
+
       <Schedule />
-      <Link to="/gallery">
-        <button>Upload Photos</button>
-      </Link>
-    </>
+
+      <div className="upload-section">
+        <Link to="/gallery">
+          <button className="upload-button">Upload Photos</button>
+        </Link>
+      </div>
+    </div>
   );
 }

@@ -1,31 +1,123 @@
-html,
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  bottom: 0;
-}
+/* ============================= */
+/* GLOBAL LAYOUT */
+/* ============================= */
 
-*::before,
-*::after,
-* {
-  box-sizing: inherit;
-}
-
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-size: 16px;
-  font-weight: 400;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+}
 
-  background: linear-gradient(180deg, #faf7f5 0%, #ffffff 40%);
+/* Center main app content */
+.media-page,
+.dashboard {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ============================= */
+/* RESPONSIVE TYPOGRAPHY */
+/* ============================= */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .media-page {
+    padding: 20px 16px 120px;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* ============================= */
+/* CARD / SURFACE STYLING */
+/* ============================= */
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+}
+
+/* ============================= */
+/* BUTTON STYLES */
+/* ============================= */
+
+button {
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+
+  background: var(--primary);
+  color: white;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+button:active {
+  transform: translateY(0px);
+}
+
+/* ============================= */
+/* INPUT STYLING */
+/* ============================= */
+
+input,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+
+  background: white;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(184, 108, 138, 0.15);
+}
+
+/* Upload section */
+
+.upload-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Wedding upload button */
+
+.upload-button {
+  font-size: 1rem;
+  padding: 14px 24px;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-light)
+  );
+
+  border-radius: 999px;
+
+  box-shadow: var(--shadow-soft);
+
+  color: white;
+}
+
+.upload-button:hover {
+  transform: translateY(-2px);
 }

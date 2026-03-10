@@ -18,8 +18,8 @@ export default function MediaUploader() {
     return incoming.filter(
       (newFile) =>
         !existing.some(
-          (file) => file.name === newFile.name && file.size === newFile.size
-        )
+          (file) => file.name === newFile.name && file.size === newFile.size,
+        ),
     );
   }
 
@@ -32,12 +32,13 @@ export default function MediaUploader() {
         (canvas) => {
           if (canvas.toBlob) {
             canvas.toBlob(
-              (blob) => resolve(new File([blob], file.name, { type: file.type })),
-              file.type
+              (blob) =>
+                resolve(new File([blob], file.name, { type: file.type })),
+              file.type,
             );
           } else resolve(file);
         },
-        { orientation: true, canvas: true }
+        { orientation: true, canvas: true },
       );
     });
   }
@@ -54,7 +55,10 @@ export default function MediaUploader() {
         canvas.height = 150;
         const ctx = canvas.getContext("2d");
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        canvas.toBlob((blob) => resolve(URL.createObjectURL(blob)), "image/jpeg");
+        canvas.toBlob(
+          (blob) => resolve(URL.createObjectURL(blob)),
+          "image/jpeg",
+        );
       });
     });
   }
@@ -63,7 +67,7 @@ export default function MediaUploader() {
     const array = Array.from(selectedFiles).filter(
       (f) =>
         f.size <= MAX_FILE_SIZE &&
-        (f.type.startsWith("image/") || f.type.startsWith("video/"))
+        (f.type.startsWith("image/") || f.type.startsWith("video/")),
     );
 
     const deduped = preventDuplicates(files, array);
@@ -72,8 +76,8 @@ export default function MediaUploader() {
       fixedFiles.map((file) =>
         file.type.startsWith("image/")
           ? URL.createObjectURL(file)
-          : generateVideoThumbnail(file)
-      )
+          : generateVideoThumbnail(file),
+      ),
     );
 
     setFiles((prev) => [...prev, ...fixedFiles]);
@@ -97,18 +101,24 @@ export default function MediaUploader() {
           formData.append("media", file);
 
           return axios
-            .post("http://localhost:3000/api/photos", formData, {
-              headers: {
-                "Content-Type": "multipart/form-data",
-                authorization: token,
+            .post(
+              "https://event-countdown-be.onrender.com/api/photos",
+              formData,
+              {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                  authorization: token,
+                },
+                onUploadProgress: (event) => {
+                  const percent = Math.round(
+                    (event.loaded * 100) / event.total,
+                  );
+                  setProgress((prev) => ({ ...prev, [index]: percent }));
+                },
               },
-              onUploadProgress: (event) => {
-                const percent = Math.round((event.loaded * 100) / event.total);
-                setProgress((prev) => ({ ...prev, [index]: percent }));
-              },
-            })
+            )
             .then((res) => res.data);
-        })
+        }),
       );
 
       setMediaItems((prev) => [...uploaded, ...prev]);
@@ -130,7 +140,7 @@ export default function MediaUploader() {
   const globalProgress =
     files.length > 0
       ? Math.round(
-          Object.values(progress).reduce((a, b) => a + b, 0) / files.length
+          Object.values(progress).reduce((a, b) => a + b, 0) / files.length,
         )
       : 0;
 

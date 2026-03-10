@@ -1,0 +1,143 @@
+/* ============================= */
+/* INVITE PAGE STYLING */
+/* ============================= */
+
+.invite-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+
+  /* Elegant gradient background with soft radial accents */
+  background: linear-gradient(135deg, #fdf6f0 0%, #ffffff 60%);
+  position: relative;
+  overflow: hidden;
+}
+
+.invite-container::before {
+  content: "";
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(216, 166, 186, 0.2), transparent);
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.invite-card {
+  position: relative;
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.fade-in {
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invite-greeting {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #b86c8a;
+}
+
+.invite-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  color: #6c6c6c;
+}
+
+.rsvp-fieldset {
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 20px;
+  background: #faf7f5;
+}
+
+.rsvp-form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.rsvp-button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rsvp-button.yes {
+  background: linear-gradient(135deg, #b86c8a, #d8a6ba);
+  color: white;
+}
+
+.rsvp-button.no {
+  background: #cccccc;
+  color: #333;
+}
+
+.rsvp-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.rsvp-button:active {
+  transform: translateY(0);
+}
+
+.loading-text {
+  font-size: 1.5rem;
+  color: #6c6c6c;
+  text-align: center;
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+
+@media (max-width: 600px) {
+  .invite-card {
+    padding: 30px 20px;
+  }
+
+  .invite-greeting {
+    font-size: 1.5rem;
+  }
+
+  .invite-subtitle {
+    font-size: 1rem;
+  }
+
+  .rsvp-button {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}

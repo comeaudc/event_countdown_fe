@@ -1,25 +1,180 @@
-/* Set default styles for mobile devices */
-@media only screen and (max-width: 768px) {
-  /* Your mobile-friendly CSS goes here, e.g. */
-  body {
-    font-size: 14px; /* decrease font size for smaller screens */
-    padding: 0; /* remove some padding to optimize for mobile */
-  }
-}
-
-/* Set default styles for computer browsers */
-@media only screen and (min-width: 769px) {
-  /* Your computer-friendly CSS goes here, e.g. */
-  body {
-    font-size: 16px; /* restore font size */
-    padding: 0; /* remove some padding to optimize for computer */
-  }
-}
-
-/* Add more media queries as needed for specific devices or screen sizes */
-
-.media-page {
+/* ============================= */
+/* GLOBAL CONTAINERS */
+/* ============================= */
+.media-page,
+.dashboard {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  padding-bottom: 120px; /* space for floating upload button */
+  padding: 16px 12px 120px;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* BUTTONS */
+/* ============================= */
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #b86c8a, #d8a6ba);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ============================= */
+/* INPUTS / TEXTAREAS */
+/* ============================= */
+input,
+textarea {
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: white;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #d8a6ba;
+  box-shadow: 0 0 0 2px rgba(184, 108, 138, 0.15);
+}
+
+/* ============================= */
+/* UPLOAD BUTTONS / SECTIONS */
+/* ============================= */
+.upload-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.upload-button {
+  font-size: 1rem;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #b86c8a, #d8a6ba);
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  color: white;
+}
+
+.upload-button:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* CARD STYLING */
+/* ============================= */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* COUNTDOWN COMPONENT */
+/* ============================= */
+.countdown-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 16px 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.countdown-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b86c8a;
+  margin-bottom: 24px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.countdown-item {
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.countdown-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #b86c8a;
+}
+
+.countdown-label {
+  font-size: 1rem;
+  color: #6c6c6c;
+  margin-top: 4px;
+}
+
+/* ============================= */
+/* MOBILE FIRST RESPONSIVE */
+/* ============================= */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .media-page,
+  .dashboard {
+    padding: 16px 12px 100px;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .countdown-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+
+  .countdown-number {
+    font-size: 2.2rem;
+  }
+
+  .countdown-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    font-size: 16px;
+  }
 }

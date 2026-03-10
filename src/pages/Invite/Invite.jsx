@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGuest } from "../../context/guestContext/guestContext.jsx";
 import axios from "axios";
 import { useEffect } from "react";
+import "./Invite.css";
 
 export default function Invite() {
   const { guest, setGuest } = useGuest();
@@ -10,8 +11,9 @@ export default function Invite() {
 
   async function getUserData() {
     try {
-      let res = await axios.get(`http://localhost:3000/api/invite/${token}`);
-
+      let res = await axios.get(
+        `https://event-countdown-be.onrender.com/api/invite/${token}`,
+      );
       setGuest(res.data);
 
       if (res.data.rsvp) {
@@ -26,9 +28,9 @@ export default function Invite() {
 
   async function handleRSVP(e) {
     try {
-      if (e.target.value == "Yes") {
+      if (e.target.value === "Yes") {
         await axios.post(
-          `http://localhost:3000/api/rsvp`,
+          `https://event-countdown-be.onrender.com/api/rsvp`,
           { attending: true },
           { headers: { authorization: token } },
         );
@@ -48,20 +50,37 @@ export default function Invite() {
   }, [token]);
 
   return guest ? (
-    <>
-      <h1>Hi {guest.name}!!!</h1>
-      <h1>You are invited to Dylan & Christinas Wedding! 💍</h1>
-      <fieldset>
-        <legend>
-          <strong>RSVP</strong>
-        </legend>
-        <form>
-          <input onClick={handleRSVP} type="button" value="Yes" />
-          <input onClick={handleRSVP} type="button" value="No" />
-        </form>
-      </fieldset>
-    </>
+    <div className="invite-container">
+      <div className="invite-card fade-in">
+        <h1 className="invite-greeting">Hi {guest.name}!!!</h1>
+        <h2 className="invite-subtitle">
+          You are invited to Dylan & Christina's Wedding 💍
+        </h2>
+
+        <fieldset className="rsvp-fieldset">
+          <legend>
+            <strong>RSVP</strong>
+          </legend>
+          <form className="rsvp-form">
+            <input
+              onClick={handleRSVP}
+              type="button"
+              value="Yes"
+              className="rsvp-button yes"
+            />
+            <input
+              onClick={handleRSVP}
+              type="button"
+              value="No"
+              className="rsvp-button no"
+            />
+          </form>
+        </fieldset>
+      </div>
+    </div>
   ) : (
-    <h1>Loading</h1>
+    <div className="invite-container">
+      <h1 className="loading-text">Loading...</h1>
+    </div>
   );
 }
